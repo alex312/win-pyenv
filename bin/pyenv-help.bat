@@ -24,8 +24,8 @@ if "%1"=="" (
     echo    init                初始虚拟环境管理目录
     echo    create              创建虚拟环境
     echo    delete              删除虚拟环境
-    echo    list                列举已经安装的python环境，包括系统中安装的pytho
-    echo                        n版本以及虚拟环境
+    echo    list                列举已经安装的python环境，包括系统中安装的python
+    echo                        版本以及虚拟环境
     echo    local               为工作目录设置虚拟环境
     echo    activate            启用当前所在工作环境的虚拟环境
     echo    deactivate          停用当前启用的虚拟环境

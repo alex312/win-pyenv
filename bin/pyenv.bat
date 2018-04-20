@@ -8,13 +8,14 @@
 :: =================================================
 
 @echo off
+
 if not defined PYENV_HOME set PYENV_HOME=%~dp0..
 
-if not defined UTILITS_PATH set UTILITS_PATH=%PYENV_HOME%\utilits
+set UTILITS_PATH=%PYENV_HOME%\utilits
 
 call %UTILITS_PATH%\normalize_path.bat %PYENV_HOME%, PYENV_HOME
 
-if not defined BINARY_PATH set BINARY_PATH=%PYENV_HOME%\cmd
+set BINARY_PATH=%PYENV_HOME%\bin
 
 :: 1. TODO: 判断子命令是否正确，如果不正确，打印help Closed.
 if "%1"=="" goto help
@@ -42,13 +43,13 @@ echo help commands | findstr "\<%1\>" >nul && goto route_commands
 ::          |------|---base.properties     基本环境配置
 ::          |---\utilits     存放作为工具使用的批处理文件，这些为bin中的批处理提供服务
 :init_config
-if not defined PYENV_CONFIG_PATH call %UTILITS_PATH%\normalize_path.bat %PYENV_HOME%\config, PYENV_CONFIG_PATH
+call %UTILITS_PATH%\normalize_path.bat %PYENV_HOME%\config, PYENV_CONFIG_PATH
 
 set VENV_ROOT=
 call %UTILITS_PATH%\config_get base,venv_root,VENV_root
 call %UTILITS_PATH%\stript %VENV_ROOT%,VENV_root
 
-if not defined VENV_root if not "%1"=="init" (
+if not defined VENV_ROOT if not "%1"=="init" (
     echo 虚拟环境管理目录还没有初始化 
     echo 使用 pyenv init 完成初始化。详情查看pyenv init --help
     goto :eof
