@@ -11,11 +11,11 @@
 if "%1"=="--help" goto help
 
 :: TODO: 获取当前工作目录的虚拟环境设置 Test.
-::       从当前路径%cd%开始向上遍历，查找python-version文件
+::       从当前路径%cd%开始向上遍历，查找.python-version文件
 ::       如果找到文件，获取虚拟环境名称,否则退出。
 set cur_dir=%cd%
 :find_venv
-if exist %cur_dir%\python-version set /p venv_name=<%cur_dir%\python-version && goto activate_venv
+if exist %cur_dir%\.python-version set /p venv_name=<%cur_dir%\.python-version && goto activate_venv
 call %UTILITS_PATH%\normalize_path %cur_dir%\.. cur_dir
 echo %cur_dir%
 if %cur_dir:~0,3%==%cur_dir% (

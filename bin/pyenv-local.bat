@@ -43,7 +43,7 @@ if not exist %venv_path% (
 echo work_dir_path: %work_dir_path%
 echo venv_name: %venv_name%
 
-echo %venv_name% >%work_dir_path%\python-version
+echo %venv_name% >%work_dir_path%\.python-version
 goto:eof
 
 :: TODO: ´òÓ¡°ïÖú Test.

@@ -66,14 +66,14 @@ pyenv
     ```
     pyenv local [project_root] myenv
     ```
-    这个命令会在project_root中创建一个python-version文件。其中保存了虚拟环境名myenv。project_root默认为当前目录。
+    这个命令会在project_root中创建一个.python-version文件。其中保存了虚拟环境名myenv。project_root默认为当前目录。
 
 5. 启用虚拟环境。
     ```
     cd [path]
     pyenv activate
     ```
-    pyenv activate会从path开始向上逐层查找python-version文件，直到找到，或者到达磁盘根目录。如果找到python-version，它会启用其中记录的虚拟环境。因此path可以是项目根目录和之下的任意子目录。
+    pyenv activate会从path开始向上逐层查找.python-version文件，直到找到，或者到达磁盘根目录。如果找到.python-version，它会启用其中记录的虚拟环境。因此path可以是项目根目录和之下的任意子目录。
 
 6. 停用虚拟环境。有两个方法可以停用当前启用的虚拟环境。使用下面的命令
     ```
