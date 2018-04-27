@@ -51,7 +51,7 @@ set venv_path=%VENV_ROOT%\%venv_name%
 setlocal ENABLEDELAYEDEXPANSION
 if exist %venv_path% if defined clear (
     choice /C YN /M "需要删除目录%venv_path%？这可能造成不可逆的影响。确认请按 Y，否请按 N。"
-    if !ERRORLEVEL!==1 (rd /s %venv_path%)
+    if !ERRORLEVEL!==1 (rd /s /q %venv_path%)
     if !ERRORLEVEL!==2 goto:eof
 )
 endlocal ENABLEDELAYEDEXPANSION

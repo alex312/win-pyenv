@@ -34,7 +34,7 @@ goto loop_paras
 setlocal ENABLEDELAYEDEXPANSION
 if defined VENV_ROOT if defined clear if exist %VENV_ROOT% (
     choice /C YN /M "是否删除目录%VENV_ROOT%？确认请按 Y，否请按 N。"
-    if !ERRORLEVEL!==1 (rd /s %VENV_ROOT% & goto init_venv_root)
+    if !ERRORLEVEL!==1 (rd /s /q %VENV_ROOT% & goto init_venv_root)
     if !ERRORLEVEL!==2 goto:eof
 )
 endlocal ENABLEDELAYEDEXPANSION
