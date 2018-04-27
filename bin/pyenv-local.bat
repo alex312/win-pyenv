@@ -20,13 +20,10 @@ set venv_name=%2
 :: 如果没有设置work_dir_path参数
 if not defined venv_name (
     set work_dir_path=%cd%
-    set venv_name=%2
+    set venv_name=%1
 )
 
 call %UTILITS_PATH%\normalize_path %work_dir_path% work_dir_path
-
-echo work_dir_path: %work_dir_path%
-echo venv_name: %venv_name%
 
 :: TODO: 检查工作目录路径是否存在。如果不存在，提示并推出 Test.
 if not exist %work_dir_path% (
@@ -43,6 +40,9 @@ if not exist %venv_path% (
 )
 
 :: TODO: 在工作目录中创建python_version文件记录虚拟环境名称 Test.
+echo work_dir_path: %work_dir_path%
+echo venv_name: %venv_name%
+
 echo %venv_name% >%work_dir_path%\python-version
 goto:eof
 
