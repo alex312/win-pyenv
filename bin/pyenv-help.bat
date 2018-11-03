@@ -59,7 +59,7 @@ if "%1"=="create" (
 
     echo;
     echo 参数:
-    echo    py_source           创建虚拟环境所使用的原始python，可是系统中安装的
+    echo    source_py           创建虚拟环境所使用的原始python，可以是系统中安装的
     echo                        python版本号，也可以是已经存在的虚拟环境名称
     echo                        这个参数是可选的，默认按照系统环境变量中设置的python
     echo                        路径顺序选择。

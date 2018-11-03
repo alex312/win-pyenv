@@ -45,12 +45,20 @@ if not defined venv_name (
     set source_py=
     set venv_name=%1
 )
+
+if not defined venv_name (
+    goto help
+)
+
 set venv_path=%VENV_ROOT%\%venv_name%
 
-:: TODO: 检查venv_name是否已经存在，当参数中存在 -c/--clear时，删除原有虚拟环境，否则退出 Test.
+
+:: 检查venv_name是否已经存在，当参数中存在 -c/--clear时，删除原有虚拟环境，否则退出.
+echo 在目录%venv_path%中创建虚拟环境%venv_name%
 setlocal ENABLEDELAYEDEXPANSION
 if exist %venv_path% if defined clear (
-    choice /C YN /M "需要删除目录%venv_path%？这可能造成不可逆的影响。确认请按 Y，否请按 N。"
+    echo 虚拟环境目录%venv_path%已经存在。
+    choice /C YN /M "如果仍然要创建虚拟环境，需要删除目录%venv_path%？这可能造成不可逆的影响。确认请按 Y，否请按 N。"
     if !ERRORLEVEL!==1 (rd /s /q %venv_path%)
     if !ERRORLEVEL!==2 goto:eof
 )
